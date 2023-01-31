@@ -1,0 +1,7 @@
+.column{
+  @apply border-[1px] border-dashed border-gray-600 flex items-center;
+}
+
+.item{
+  @apply h-5 my-5 w-full bg-white text-black py-7;
+}

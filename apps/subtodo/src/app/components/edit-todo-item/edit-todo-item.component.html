@@ -1,0 +1,58 @@
+<div class="form-control w-full">
+  <label class="label">
+    <span class="label-text">Title</span>
+  </label>
+  <input
+    type="text"
+    placeholder="Buy some milk"
+    [(ngModel)]="data.title"
+    class="input input-bordered w-full"
+  />
+</div>
+<div class="form-control">
+  <label class="label">
+    <span class="label-text">Description</span>
+  </label>
+  <textarea
+    class="textarea textarea-bordered h-24"
+    [(ngModel)]="data.description"
+    placeholder="example: go to the shop"
+  ></textarea>
+</div>
+
+<div class="form-control w-full">
+  <label class="label">
+    <span class="label-text">Add new Tag</span>
+  </label>
+  <input
+    type="text"
+    (keyup)="AddNewTag($event)"
+    placeholder="important"
+    [(ngModel)]="NewTag"
+    class="input input-bordered w-full"
+  />
+</div>
+
+<div class="flex space-x-3 mt-5">
+  <div
+    *ngFor="let tag of data.tags; let index = index"
+    class="badge badge-accent"
+  >
+    {{ tag }}
+    <span class="cursor-pointer" (click)="RemoveTag(index)">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        class="inline-block w-4 h-4 stroke-current"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        ></path>
+      </svg>
+    </span>
+  </div>
+</div>

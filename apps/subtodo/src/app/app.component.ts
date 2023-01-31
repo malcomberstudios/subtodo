@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@subotodo/api-interfaces';
+
+import { Observable } from 'rxjs';
+
+import { ITodoItem } from '@subotodo/api-interfaces';
+
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'subotodo-root',
@@ -8,6 +12,9 @@ import { Message } from '@subotodo/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+
+  constructor(private readonly apiService: ApiService){}
+
+  public TodoItems: Observable<ITodoItem[]> = this.apiService.GetTodoItems();
+
 }

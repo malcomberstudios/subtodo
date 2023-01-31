@@ -1,0 +1,7 @@
+<div class="flex space-x-4 px-4 mt-10">
+  <div class="flex-1 column flex-col space-y-3">
+    <ng-container *ngFor="let item of TodoItems">
+      <subotodo-todo-item [Item]="item" class="card w-full bg-base-100 shadow-xl"></subotodo-todo-item>
+    </ng-container>
+  </div>
+</div>

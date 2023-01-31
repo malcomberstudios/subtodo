@@ -1,0 +1,55 @@
+<div *ngIf="Item as item" [ngClass]="{ 'card-body': !IsChild }">
+  <h2 class="card-title flex">
+    <span class="flex-1 flex items-center"
+      >{{ item.title }}
+      <fa-icon
+        (click)="EditTodoItem()"
+        class="ml-2 text-sm text-gray-500"
+        [icon]="faPencil"
+      ></fa-icon
+    ></span>
+    <div class="form-control">
+      <label class="label cursor-pointer">
+        <input
+          type="checkbox"
+          [(ngModel)]="item.completed"
+          class="checkbox checkbox-primary"
+        />
+      </label>
+    </div>
+  </h2>
+  <p>{{ item.description }}</p>
+  <span class="flex space-x-2 my-5 px-2" *ngFor="let child of item.children">
+    <svg
+      fill="none"
+      height="24"
+      stroke-width="1.5"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M13.25 19.25L16.75 15.75L13.25 12.25"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M16.75 15.75H10.75C8.54086 15.75 6.75 13.9591 6.75 11.75V4.75"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    <subotodo-todo-item
+      class="flex-1"
+      [IsChild]="true"
+      [Item]="child"
+    ></subotodo-todo-item>
+  </span>
+  <div class="card-actions justify-end">
+    <div *ngFor="let tag of item.tags" class="badge badge-primary">
+      {{ tag }}
+    </div>
+  </div>
+</div>
